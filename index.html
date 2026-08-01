@@ -1,96 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Football Club</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    color:#333;
+}
+
+header{
+    background:#0b6623;
+    color:white;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+}
+
+nav ul li{
+    margin-left:20px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018') center/cover;
+    height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero-content{
+    background:rgba(0,0,0,0.6);
+    padding:30px;
+    border-radius:10px;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:20px;
+}
+
+.btn{
+    background:#ffcc00;
+    color:#000;
+    padding:12px 25px;
+    text-decoration:none;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+section{
+    padding:60px 10%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    color:#0b6623;
+    font-size:36px;
+}
+
+.matches{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.match-card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+table th, table td{
+    padding:15px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+table th{
+    background:#0b6623;
+    color:white;
+}
+
+.players{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.player-card{
+    background:white;
+    text-align:center;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.player-card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+}
+
+.player-card h3{
+    margin:15px 0;
+}
+
+footer{
+    background:#0b6623;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.contact p{
+    text-align:center;
+    margin:10px 0;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="logo">⚽ FOOTBALL CLUB</div>
+    <nav>
+        <ul>
+            <li><a href="#matches">Matches</a></li>
+            <li><a href="#table">Table</a></li>
+            <li><a href="#players">Players</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Football Club</h1>
+        <p>The Home of Champions</p>
+        <a href="#matches" class="btn">View Fixtures</a>
+    </div>
+</section>
+
+<section id="matches">
+    <h2 class="section-title">Latest Matches</h2>
+
+    <div class="matches">
+        <div class="match-card">
+            <h3>Football Club vs Lions FC</h3>
+            <p>3 - 1</p>
+            <p>Premier League</p>
+        </div>
+
+        <div class="match-card">
+            <h3>United FC vs Football Club</h3>
+            <p>1 - 2</p>
+            <p>League Cup</p>
+        </div>
+
+        <div class="match-card">
+            <h3>Football Club vs Eagles FC</h3>
+            <p>Upcoming Match</p>
+            <p>Saturday, 5:00 PM</p>
+        </div>
+    </div>
+</section>
+
+<section id="table">
+    <h2 class="section-title">League Table</h2>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Pos</th>
+                <th>Club</th>
+                <th>Points</th>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>Football Club</td>
+                <td>78</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Lions FC</td>
+                <td>73</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>United FC</td>
+                <td>69</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="players">
+    <h2 class="section-title">Star Players</h2>
+
+    <div class="players">
+
+        <div class="player-card">
+            <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974" alt="Player">
+            <h3>John Smith</h3>
+            <p>Striker</p>
+        </div>
+
+        <div class="player-card">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d" alt="Player">
+            <h3>David James</h3>
+            <p>Midfielder</p>
+        </div>
+
+        <div class="player-card">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e" alt="Player">
+            <h3>Michael Brown</h3>
+            <p>Goalkeeper</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <p>📞 +234 800 000 0000</p>
+    <p>📧 info@footballclub.com</p>
+    <p>📍 Lagos, Nigeria</p>
+</section>
+
+<footer>
+    <p>&copy; 2026 Football Club. All Rights Reserved.</p>
+</footer>
+
+</body>
 </html>
